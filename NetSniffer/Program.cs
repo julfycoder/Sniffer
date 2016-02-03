@@ -22,7 +22,7 @@ namespace NetSniffer
             {
                 if (i < receivedData.Length - 1 && receivedData.Substring(i, 1) != "\a") s += receivedData.Substring(i, 1);
             }
-            Console.WriteLine(new string('<', 60) + "\n" + number.ToString() + ") Time: |{0}|, From: {1}, To: {2}, packet:\n" + "{3}\n" + new string('>', 60),
+            Console.WriteLine(new string('<', 70) + "\n" + number.ToString() + ") Time: |{0}|, From: {1}, To: {2}, packet:\n" + "{3}\n" + new string('>', 70),
                 DateTime.Now, packet.GetSenderIPAddress(), packet.GetDestinationIPAddress(), s);
         }
     }
