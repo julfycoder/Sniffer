@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Sockets;
+using NetSniffer.Model;
 
 namespace NetSniffer
 {
@@ -8,7 +9,7 @@ namespace NetSniffer
         static int number = 0;
         static void Main(string[] args)
         {
-            Model.SnifferListenAlgorithm listenAlgo = new Model.SnifferListenAlgorithm1();
+            SnifferListenAlgorithm listenAlgo = new SnifferListenAlgorithm1();
             listenAlgo.DataIsReceived += WriteReceivedData;
             listenAlgo.Listen("192.168.1.2", 0);
         }
