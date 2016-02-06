@@ -22,8 +22,8 @@ namespace NetSniffer
             {
                 if (i < receivedData.Length - 1 && receivedData.Substring(i, 1) != "\a") s += receivedData.Substring(i, 1);
             }
-            Console.WriteLine(new string('<', 70) + "\n" + number.ToString() + ") Time: |{0}|, From: {1}, To: {2}, packet:\n" + "{3}\n" + new string('>', 70),
-                DateTime.Now, packet.GetSenderIPAddress(), packet.GetDestinationIPAddress(), s);
+            Console.WriteLine(new string('<', 70) + "\n" + number.ToString() + ") Time: |{0}|, From: {1}, To: {2}, protocol type: {3}, packet:\n" + "{4}\n" + new string('>', 70),
+                DateTime.Now, packet.GetSenderIPAddress(), packet.GetDestinationIPAddress(), packet.GetProtocolType(), s);
         }
     }
 }

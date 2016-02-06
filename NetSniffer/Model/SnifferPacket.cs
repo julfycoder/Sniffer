@@ -22,6 +22,10 @@ namespace NetSniffer.Model
         {
             return new IPAddress((long)BitConverter.ToUInt32(fullPacket, 12));
         }
+        public override int GetProtocolType()
+        {
+            return (int)fullPacket[9];
+        }
         public override int GetVolume()
         {
             return volume;

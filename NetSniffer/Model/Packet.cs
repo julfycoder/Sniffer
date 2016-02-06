@@ -15,5 +15,6 @@ namespace NetSniffer.Model
         public abstract IPAddress GetDestinationIPAddress();
         public abstract IPAddress GetSenderIPAddress();
         public abstract int GetVolume();
+        public abstract int GetProtocolType();
     }
 }
