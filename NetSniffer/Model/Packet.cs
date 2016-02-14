@@ -9,12 +9,13 @@ namespace NetSniffer.Model
     abstract class Packet
     {
         protected byte[] fullPacket;
-        protected int volume;
-        public Packet(byte[] fullPacket, int volume) { this.fullPacket = fullPacket; this.volume=volume; }
+        public Packet(byte[] fullPacket, int volume) { this.fullPacket = fullPacket; this.Volume=volume; }
         public abstract string GetFullPacket();
         public abstract IPAddress GetDestinationIPAddress();
         public abstract IPAddress GetSenderIPAddress();
-        public abstract int GetVolume();
+        public abstract int Volume { get; protected set; }
         public abstract int GetProtocolType();
+        public abstract byte GetSenderPort();
+        public abstract byte GetDestinationPort();
     }
 }

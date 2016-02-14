@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Sockets;
 using NetSniffer.Model;
 
@@ -11,7 +12,8 @@ namespace NetSniffer
         {
             SnifferListenAlgorithm listenAlgo = new SnifferListenAlgorithm1();
             listenAlgo.DataIsReceived += WriteReceivedData;
-            listenAlgo.Listen("192.168.1.2", 0);
+            listenAlgo.Listen(Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(), 666);
+            
         }
         static void WriteReceivedData(Model.Packet packet)
         {
@@ -22,8 +24,8 @@ namespace NetSniffer
             {
                 if (i < receivedData.Length - 1 && receivedData.Substring(i, 1) != "\a") s += receivedData.Substring(i, 1);
             }
-            Console.WriteLine(new string('<', 70) + "\n" + number.ToString() + ") Time: |{0}|, From: {1}, To: {2}, protocol type: {3}, packet:\n" + "{4}\n" + new string('>', 70),
-                DateTime.Now, packet.GetSenderIPAddress(), packet.GetDestinationIPAddress(), packet.GetProtocolType(), s);
+            Console.WriteLine(new string('<', 70) + "\n" + number.ToString() + ") Time: |{0}|, From: {1}, To: {2}, protocol_type: {3}, sender_port: {4}, destination_port: {5}, packet:\n" + "{6}\n" + new string('>', 70),
+                DateTime.Now, packet.GetSenderIPAddress(), packet.GetDestinationIPAddress(), packet.GetProtocolType(), packet.GetSenderPort(), packet.GetDestinationPort(), s);
         }
     }
 }

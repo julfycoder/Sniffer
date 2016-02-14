@@ -7,12 +7,12 @@ using System.Net.Sockets;
 
 namespace NetSniffer.Model
 {
-    class SnifferPacket:Packet
+    class SnifferPacket : Packet
     {
-        public SnifferPacket(byte[] fullPacket,int recv) : base(fullPacket,recv) { }
+        public SnifferPacket(byte[] fullPacket, int recv) : base(fullPacket, recv) { }
         public override string GetFullPacket()
         {
-            return Encoding.UTF8.GetString(fullPacket, 0, volume);
+            return Encoding.UTF8.GetString(fullPacket, 0, Volume);
         }
         public override IPAddress GetDestinationIPAddress()
         {
@@ -26,9 +26,19 @@ namespace NetSniffer.Model
         {
             return (int)fullPacket[9];
         }
-        public override int GetVolume()
+        public override byte GetSenderPort()
         {
-            return volume;
+            return fullPacket[20];
         }
+        public override byte GetDestinationPort()
+        {
+            return fullPacket[22];
+        }
+        public override int Volume
+        {
+            get;
+            protected set;
+        }
+        
     }
 }
