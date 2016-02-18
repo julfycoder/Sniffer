@@ -13,7 +13,7 @@ namespace NetSniffer
             SnifferListenAlgorithm listenAlgo = new SnifferListenAlgorithm1();
             listenAlgo.DataIsReceived += WriteReceivedData;
             listenAlgo.Listen(Dns.GetHostByName(Dns.GetHostName()).AddressList[0].ToString(), 666);
-            
+            Console.WriteLine("Hello, world!");
         }
         static void WriteReceivedData(Model.Packet packet)
         {
